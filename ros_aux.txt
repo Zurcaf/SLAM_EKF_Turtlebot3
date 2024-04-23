@@ -1,0 +1,22 @@
+Test the communications: can the computer see the robot’s topics?
+->  rostopic list
+
+Interesting topics to query: “/odom”, “/scan”
+->  rostopic echo "/odom"
+->  rostopic info "/odom"
+->  rostopic hz "/odom"
+
+Test motion commands
+->  rostopic pub /cmd_vel geometry_msgs/Twist '[0.0, 0.0, 0.0]' '[0.0, 0.0, 0.5]' (or)
+->  rostopic pub –r 1 /cmd_vel geometry_msgs/Twist '[0.1, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
+
+Control the robot. On the laptop/Lab computer, run
+->  roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+-----------------Accessing the robot camera-----------------
+
+1. Launch the camera node on the robot
+->  roslaunch turtlebot3_bringup turtlebot3_rpicamera.launch
+
+2. To see the camera feed, run on the laptop/Lab computer
+->  rosrun rqt_image_view rqt_image_view

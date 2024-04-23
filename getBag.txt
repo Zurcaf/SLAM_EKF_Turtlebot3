@@ -1,0 +1,33 @@
+---------Dar permissões ao TurtleBot3 para aceder ao PC (setup no pc)------------
+#terminal numero 1 get Ip do teu PC
+->	hostname -I
+->  gedit .bashrc
+
+#editar o ficheiro .bashrc
+export TURTLEBOT3_MODEL=  waffle_pi
+export TURTLEBOT3_NAME=  waffle5          		    [TurtleBot3 181818 on the stick]
+export TURTLEBOT3_IP=192.168.28.15	   		        [TurtleBot IP]
+export TURTLEBOT3_NUMBER=15	          		        [Last numbers of the TurtleBot3 IP]
+export ROS_MASTER_URI=http://192.168.28.15:11311    [TurtleBot3 IP]
+export ROS_HOSTNAME=192.168.[27/28].XXX   		    [lab computer / laptop IP]
+export ROS_IP=192.168.[27/28].XXX		        	[lab computer / laptop IP]
+
+
+-----------Comandos para retirar bags do TurtleBot3 e passar para o PC------------
+#terminal numero 2 para Roscore
+->	ssh user@192.168.28.[11…15]
+->	roscore
+
+#terminal numero 3  para time sync and launch the robot drivers
+->	ssh user@192.168.28.[11…15]
+->	sudo ntpdate ntp.ubuntu.com
+->	roslaunch turtlebot3_bringup turtlebot3_robot.launch
+
+#terminal numero 4 record topics in rosbags 
+->	ssh 192.168.28.[11…15]
+->	rosbag record -a 				#for all topics
+->	rosbag record /<topic name> 	#for specific topics
+-> ctrl + c                         #to stop the recording
+
+#terminal numero 5 to copy the bag from the turtlebot3 to the pc
+->  scp user@192.168.28.[11…15]:<CAMINHO PARA BAG NO TURTHL>*.bag </home/user/Desktop/(CAMINHO DESTINO NO PC)>

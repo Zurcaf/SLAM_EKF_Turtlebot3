@@ -1,96 +1,17 @@
 #serve para facilitar a utilização de varios terminais simultaneamente
 sudo apt-get install terminator
 
-Relevant topics:
-• Subscribes:
-	- /cmd_vel (geometry_msgs/Twist)
-	- /reset (std_msgs/Empty)
-• Publishes:
-	- /odom (nav_msgs/Odometry)
-	- /tf (tf2_msgs/tfMessage)
-	- /scan (sensor_msgs/LaserScan)
-Additional resources:
-	- http://wiki.ros.org/turtlebot3_bringup
-	- http://wiki.ros.org/hls_lfcd_lds_driver
-	- http://wiki.ros.org/sensor_msgs/Tutorials
-
-Credenciais do robo:
-	Username: user
-	Password: user
-
-Credenciais da Network:
-	Network: deec-robots
-	Password: shakeytherobot
-IP range: 192.168.28.15 [15 porque é o robo 5]
-
-
-1. On a new terminal of the Laptop/Lab computer, and SSH into the RPi of the Turtlebot
-ssh user@192.168.28.[11…15]
-
-2. Start a roscore instance inside the RPi of the Turtlebot
-roscore
-
-3. Open another terminal in the Laptop/Lab computer and SSH into the RPi again
-ssh user@192.168.28.[11…15]
-
-4. Sync the robot time [not mandatory]
+#time sync packege for ros
 sudo apt-get install ntpdate
-sudo ntpdate ntp.ubuntu.com
 
-5. Launch the robot drivers
-roslaunch turtlebot3_bringup turtlebot3_robot.launch
-
-6. Install the Turtlebot3 packages - run in the laptop once
+#Install the Turtlebot3 packages - run in the laptop once
 sudo apt-get install ros-noetic-dynamixel-sdk
 sudo apt-get install ros-noetic-turtlebot3-msgs
 sudo apt-get install ros-noetic-turtlebot3
 sudo apt-get install ros-noetic-teleop-twist-keyboard
 
-----------------------Pré-lab------------------------------------------
 
 
 
-
-
-#get Ip do teu PC
-hostname -I
-
-7. Additional configurations. Run in the Laptop/Lab computer (or append to you ~/.bashrc file)
-If ipconfig is not available, use ip address or install net-tools to run ifconfig: apt update apt install net-tools
-
-export TURTLEBOT3_MODEL=  waffle_pi
-export TURTLEBOT3_NAME=  waffle4          		[TurtleBot3 181818 on the stick]
-export TURTLEBOT3_IP=192.168.28.15	   		[TurtleBot IP]
-export TURTLEBOT3_NUMBER=15	          		[Last numbers of the TurtleBot3 IP]
-export ROS_MASTER_URI=http://192.168.28.[11…15]:11311 [TurtleBot3 IP]
-export ROS_HOSTNAME=192.168.[27/28].XXX   		[lab computer / laptop IP]
-export ROS_IP=192.168.[27/28].XXX			[lab computer / laptop IP]
-
-8. Test the communications: can the computer see the robot’s topics?
-rostopic list
-
-9. Interesting topics to query: “/odom”, “/scan”
-rostopic echo "/odom"
-rostopic info "/odom"
-rostopic hz "/odom"
-
-10. Test motion commands
-rostopic pub /cmd_vel geometry_msgs/Twist '[0.0, 0.0, 0.0]' '[0.0, 0.0, 0.5]' (or)
-rostopic pub –r 1 /cmd_vel geometry_msgs/Twist '[0.1, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
-
-11. To record topics in rosbags *
-rosbag record -a (for all topics)
-rosbag record /<topic name> (for specific topics)
-
-* If path unspecified, bags get recorded in the folder where the command is run. See http://wiki.ros.org/rosbag/Commandline#record
-
-12. Control the robot. On the laptop/Lab computer, run
-roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
-
-Accessing the robot camera
-1. Launch the camera node on the robot
-roslaunch turtlebot3_bringup turtlebot3_rpicamera.launch
-2. To see the camera feed, run on the laptop/Lab computer
-rosrun rqt_image_view rqt_image_view
 
 

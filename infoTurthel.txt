@@ -1,0 +1,21 @@
+Relevant topics:
+• Subscribes:
+	- /cmd_vel (geometry_msgs/Twist)
+	- /reset (std_msgs/Empty)
+• Publishes:
+	- /odom (nav_msgs/Odometry)
+	- /tf (tf2_msgs/tfMessage)
+	- /scan (sensor_msgs/LaserScan)
+Additional resources:
+	- http://wiki.ros.org/turtlebot3_bringup
+	- http://wiki.ros.org/hls_lfcd_lds_driver
+	- http://wiki.ros.org/sensor_msgs/Tutorials
+
+Credenciais do robo:
+	Username: user
+	Password: user
+
+Credenciais da Network:
+	Network: deec-robots
+	Password: shakeytherobot
+IP range: 192.168.28.15 [15 porque é o robo 5]
