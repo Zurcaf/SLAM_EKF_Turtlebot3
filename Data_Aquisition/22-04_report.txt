@@ -1,0 +1,1 @@
+retiramos um rosbag para testar como se tira do robo
