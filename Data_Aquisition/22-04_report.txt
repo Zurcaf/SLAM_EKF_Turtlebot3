@@ -1,1 +1,7 @@
 retiramos um rosbag para testar como se tira do robo
+
+criação de ficheiros com coisas a instalar no nosso pc
+comandos para retirar o rosbag do robo
+
+não devemos nunca estar a enviar os dados do bag para o pc em tempo real (criar o rosbag no pc é errado)
+devemos sempre criar o rosbag no robo e depois retirar o rosbag do robo para o pc porque temos melhores dados e não perdemos nada
