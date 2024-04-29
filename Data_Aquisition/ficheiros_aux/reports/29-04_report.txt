@@ -1,0 +1,6 @@
+retiramos 1 bag as 17:36 mas enganamo-nos e metemos o bag no pc portanto deve estar todo lixado os tempos
+
+retiramos o 2º bag as 17:43 e fizemos como deve serve (primeiro criamos no robo e depois copiamos para o pc)
+notas:
+    -alguns dos arucos não se vonseguem ver bem (cuidado na proxima)
+    -de resto deve estar bom (temos odometria e input)
