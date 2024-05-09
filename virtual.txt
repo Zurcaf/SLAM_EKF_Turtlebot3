@@ -1,0 +1,12 @@
+
+pip install virtualenv       #install virtualenv
+virtualenv SA_SLAM           #create virtualenv
+source SA_SLAM/bin/activate  #activate virtualenv
+
+pip install -r requirements.txt
+
+
+
+
+
+pip install --upgrade opencv-contrib-python
