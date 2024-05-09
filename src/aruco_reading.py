@@ -24,12 +24,19 @@ while cap.isOpened():
     # Desenhar caixas delimitadoras ao redor dos arucos detectados
     if ids is not None:
         for i in range(len(ids)):
-            cv2.aruco.drawDetectedMarkers(frame, corners)
+            # Aumente a espessura da linha para 4 (por exemplo)
+            cv2.aruco.drawDetectedMarkers(frame, corners, ids, (0, 0, 255))
+
+            # # Extrair os cantos do marcador
+            # marker_corners = corners[i][0]
+
+            # # Desenhar um contorno ao redor do marcador
+            # cv2.polylines(frame, [np.int32(marker_corners)], True, (0, 255, 0), thickness=2)
 
     # Mostrar o frame com os arucos detectados
     cv2.imshow('Frame', frame)
 
-# Sair do loop quando 'q' for pressionado
+    # Sair do loop quando 'q' for pressionado
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 

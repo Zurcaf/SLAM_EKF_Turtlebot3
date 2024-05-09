@@ -1,12 +1,7 @@
+--------------------instalação de ambientes virtuais para python--------------------
+pip install virtualenv        #install virtualenv    #fazes uma vez no pc para instalar o virtualenv
+virtualenv slam_env           #create virtualenv     #crias um ambiente virtual no git onde estás a trabalhar uma vez
 
-pip install virtualenv       #install virtualenv
-virtualenv SA_SLAM           #create virtualenv
-source SA_SLAM/bin/activate  #activate virtualenv
+source slam_env/bin/activate  #activate virtualenv    #activas o ambiente virtual para trabalhar sempre
 
 pip install -r requirements.txt
-
-
-
-
-
-pip install --upgrade opencv-contrib-python
