@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # Carregar o vídeo
-video_path = 'aruco_input_test.mp4'
+video_path = '../bags/aruco_input_test.mp4'
 cap = cv2.VideoCapture(video_path)
 
 # Inicializar o detector de arucos
