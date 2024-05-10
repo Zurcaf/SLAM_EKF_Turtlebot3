@@ -1,0 +1,12 @@
+
+# 1º dia e primeiro bag file (nada de jeito)
+22-04-2024_13-43-25.bag
+
+# 2º dia e segundo bag file (foi feito no pc do martins e não tem nada de jeito)
+29-04-2024_17-36-23.bag
+
+# 2º dia e terceiro bag file (tem potencial mas há 2 arucos que n se vem bem...)
+29-04-2024_17-43-03.bag
+
+# 3º dia e primeiro bag (calibração da camera)
+# 3º dia e segundo bag (novo bag com percurso e a ver-se os arucos todos)
