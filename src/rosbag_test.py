@@ -1,25 +1,22 @@
 import rosbag
 
 try:
-    # Abrir o arquivo ROS bag
+    # Open the ROS bag file
     bag = rosbag.Bag('../bags/29-04-2024_17-43-03.bag')
 
-    # Obtenha os tópicos do arquivo de bag
+    # Get the topics from the bag file
     topics = bag.get_type_and_topic_info().topics.keys()
 
-    # Imprima os tópicos
+    print(f"Rosbag Topics:")
+
+    # Print the topics
     for topic in topics:
         print(topic)
 
-    # Iterar pelas mensagens no bag
-    # for topic, msg, t in bag.read_messages():
-    #     # Processar as mensagens aqui
-    #     print(f"Tópico: {topic}, Mensagem: {msg}, Timestamp: {t}")
-
-    # Fechar o bag quando terminar
+    # Close the bag when finished
     bag.close()
 
 except rosbag.ROSBagException as e:
-    print(f"Erro ao abrir o arquivo ROS bag: {e}")
+    print(f"Error opening the ROS bag file: {e}")
 except FileNotFoundError:
-    print("Arquivo não encontrado. Verifique o caminho ou nome do arquivo.")
+    print("File not found. Check the path or filename.")
