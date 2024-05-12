@@ -7,3 +7,4 @@ pycryptodomex==3.20.1
 python-gnupg==0.5.2
 rospkg==1.5.1
 matplotlib==3.7.5
+empy==4.1

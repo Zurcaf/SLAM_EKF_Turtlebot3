@@ -1,0 +1,13 @@
+Aruco reading:
+- calibration of camera
+
+bag tests:
+- camera calibration (chess board print)
+- Error calibrations (R and Q)
+    - for R need real distance traveled -> expected by odometry
+    - for Q need real distance to aruco code -> distance expected by camera (não tenho a certeza disto)
+
+- bag de um canto do quadrado;
+    - ver mais do que um aruco ao mesmo tempo?
+    - percorrer distancias grandes sem ver um aruco?
+    - bag normal de maneira a veres todos os arucos!
