@@ -1,0 +1,2 @@
+tutorials
+-DCATKIN_DEVEL_PREFIX=/home/afonso/Documents/repositorios/SLAM_EKF_Turtlebot3/testes_youtube/devel -DCMAKE_INSTALL_PREFIX=/home/afonso/Documents/repositorios/SLAM_EKF_Turtlebot3/testes_youtube/install -G Unix Makefiles

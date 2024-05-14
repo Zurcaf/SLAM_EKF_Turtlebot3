@@ -1,0 +1,8 @@
+prefix=/home/afonso/Documents/repositorios/SLAM_EKF_Turtlebot3/testes_youtube/install
+
+Name: tutorials
+Description: Description of tutorials
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
