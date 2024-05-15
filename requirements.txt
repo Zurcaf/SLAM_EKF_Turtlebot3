@@ -1,10 +1,11 @@
-numpy==1.19.5
+numpy==1.20
 opencv-python==4.9.0.80
 opencv-contrib-python==4.9.0.80
 rosbag==1.16.0
 pyyaml == 6.0.1
-pycryptodomex==3.20.1
+pycryptodomex==3.20.0
 python-gnupg==0.5.2
 rospkg==1.5.1
 matplotlib==3.7.5
 empy==4.1
+ipywidgets==8.1.1

@@ -34,6 +34,7 @@ if __name__=="__main__":
     x_positions = []
     y_positions = []
     quaternions = []
+    
     try:
         rospy.init_node('bag_subscriber')
         subscriber_odom = OdomSubscriber('/odom')
