@@ -5,3 +5,5 @@ virtualenv slam_env           #create virtualenv     #crias um ambiente virtual 
 source slam_env/bin/activate  #activate virtualenv    #activas o ambiente virtual para trabalhar sempre
 
 pip install -r requirements.txt
+
+code ~/.bashrc

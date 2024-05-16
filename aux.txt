@@ -9,5 +9,17 @@ rospkg==1.5.1
 matplotlib==3.7.5
 empy==4.1
 ipywidgets==8.1.1
-pygame==2.5.2
-python_ugv_sim =
+
+numpy
+opencv-python
+opencv-contrib-python
+rosbag
+pyyaml
+pycryptodomex
+python-gnupg
+rospkg
+matplotlib
+empy
+ipywidgets
+pygame
+python_ugv_sim
