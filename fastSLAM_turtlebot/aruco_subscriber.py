@@ -3,7 +3,7 @@ from  fiducial_msgs.msg import FiducialTransformArray
 import numpy as np
 
 #/fiducial_transforms [fiducial_msgs/FiducialTransformArray]
- #/fiducial_vertices [fiducial_msgs/FiducialArray]
+#/fiducial_vertices [fiducial_msgs/FiducialArray]
 
 
 class ArucoSubscriberTransforms:
@@ -28,13 +28,6 @@ class ArucoSubscriberTransforms:
             # print("Distance:"+ str(dist) + "\n")
             # print("Angle:"+ str(angle) + "\n")
             print(ros_data)
-
-        
-
-
-
-
-
 
 
 if __name__ == '__main__':

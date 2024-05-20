@@ -8,7 +8,7 @@ import time
 # <------------------------- EKF SLAM STUFF --------------------------------->
 # ---> Robot Parameters
 n_state = 3 # Number of state variables
-robot_fov = 3 # robot field of view radius (m)
+robot_fov = 2 # robot field of view radius (m)
 
 # ---> Landmark parameters
 # Single landmark
@@ -22,20 +22,20 @@ robot_fov = 3 # robot field of view radius (m)
 #              (9,1)]
 
 # Rectangular pattern
-landmarks = [(4,4),
-             (4,8),
-             (8,8),
-             (12,8),
-             (16,8),
+landmarks = [(4,2),
+             (4,10),
+             (14,2),
+             (14,10),
+             (2,4),
+             (2,8),
              (16,4),
-             (12,4),
-             (8,4)]
+             (16,8)]
 
 n_landmarks = len(landmarks)
 
 # ---> Noise parameters
 R = np.diag([0.002,0.002,0.00005]) # sigma_x, sigma_y, sigma_theta
-Q = np.diag([0.05,0.005]) # sigma_r, sigma_phi
+Q = np.diag([0.00,0.05]) # sigma_r, sigma_phi
 
 # ---> EKF Estimation Variables
 mu = np.zeros((n_state+2*n_landmarks,1)) # State estimate (robot pose and landmark positions)
@@ -72,6 +72,14 @@ def sim_measurement(x,landmarks):
             
     return zs
 
+def show_landmark_estimate(mu,env):
+    bola = (0,0)
+    for i in range(8):
+        mu[3+i*2+0] , mu[3+i*2+1] = bola[0], bola[1]
+        lx_pixel, ly_pixel = env.position2pixel(bola)
+        r_pixel = env.dist2pixellen(0.2) # Radius of the circle for te ground truth locations of the landmarks
+        pygame.draw.rect(env.get_pygame_surface(), (0, 255, 0), (lx_pixel - r_pixel/2, ly_pixel - r_pixel/2, r_pixel, r_pixel))
+
 # ---> EKF SLAM steps
 def prediction_update(mu,sigma,u,dt):
     '''
@@ -92,8 +100,8 @@ def prediction_update(mu,sigma,u,dt):
     
     # Update state estimate mu with model
     state_model_mat = np.zeros((n_state,1)) # Initialize state update matrix from model
-    state_model_mat[0] = -(v/w)*np.sin(theta)+(v/w)*np.sin(theta+w*dt) if w>0.01 else v*np.cos(theta)*dt # Update in the robot x position
-    state_model_mat[1] = (v/w)*np.cos(theta)-(v/w)*np.cos(theta+w*dt) if w>0.01 else v*np.sin(theta)*dt # Update in the robot y position
+    state_model_mat[0] = -(v/w)*np.sin(theta)+(v/w)*np.sin(theta+w*dt) if np.abs(w)>0.01 else v*np.cos(theta)*dt # Update in the robot x position
+    state_model_mat[1] = (v/w)*np.cos(theta)-(v/w)*np.cos(theta+w*dt) if np.abs(w)>0.01 else v*np.sin(theta)*dt # Update in the robot y position
     state_model_mat[2] = w*dt # Update for robot heading theta
     mu = mu + np.matmul(np.transpose(Fx),state_model_mat) # Update state estimate, simple use model with current state estimate
     
@@ -203,7 +211,7 @@ def show_landmark_location(landmarks,env):
     for landmark in landmarks:
         lx_pixel, ly_pixel = env.position2pixel(landmark)
         r_pixel = env.dist2pixellen(0.2) # Radius of the circle for the ground truth locations of the landmarks
-        pygame.gfxdraw.filled_circle(env.get_pygame_surface(),lx_pixel,ly_pixel,r_pixel,(0,255,255)) # Blit the circle onto the surface
+        pygame.draw.rect(env.get_pygame_surface(), (255, 0, 0), (lx_pixel - r_pixel/2, ly_pixel - r_pixel/2, r_pixel, r_pixel))
 
 def show_measurements(x,zs,env):
     '''
@@ -232,7 +240,7 @@ def show_uncertainty_ellipse(env,center,width,angle):
     '''
     target_rect = pygame.Rect(center[0]-int(width[0]/2),center[1]-int(width[1]/2),width[0],width[1])
     shape_surf = pygame.Surface(target_rect.size, pygame.SRCALPHA)
-    pygame.draw.ellipse(shape_surf, env.red, (0, 0, *target_rect.size), 2)
+    pygame.draw.ellipse(shape_surf, env.green, (0, 0, *target_rect.size), 2)
     rotated_surf = pygame.transform.rotate(shape_surf, angle)
     env.get_pygame_surface().blit(rotated_surf, rotated_surf.get_rect(center = target_rect.center))
 
@@ -281,6 +289,8 @@ if __name__ == '__main__':
         # Show actual locations of robot and landmarks
         env.show_robot(robot) # Re-blit robot
         show_landmark_location(landmarks,env)
+        # show_landmark_estimate(mu,sigma,env)
+        
         
         # Show estimates of robot and landmarks (estimate and uncertainty)
         show_robot_estimate(mu,sigma,env)
