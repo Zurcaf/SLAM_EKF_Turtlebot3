@@ -2,7 +2,7 @@ import rosbag
 
 try:
     # Open the ROS bag file
-    bag = rosbag.Bag('../bags/29-04-2024_17-43-03.bag')
+    bag = rosbag.Bag('../rosbags/data/29-04-2024_17-43-03.bag')
 
     # Get the topics from the bag file
     topics = bag.get_type_and_topic_info().topics.keys()
