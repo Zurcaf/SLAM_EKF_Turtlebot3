@@ -11,7 +11,6 @@ chessboardSize = (9,6)
 frameSize = (640,480)
 
 
-
 # termination criteria
 criteria = (cv.TERM_CRITERIA_EPS + cv.TERM_CRITERIA_MAX_ITER, 30, 0.001)
 
@@ -93,8 +92,6 @@ dst = cv.remap(img, mapx, mapy, cv.INTER_LINEAR)
 x, y, w, h = roi
 dst = dst[y:y+h, x:x+w]
 cv.imwrite('caliResult2.png', dst)
-
-
 
 
 # Reprojection Error

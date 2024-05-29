@@ -17,8 +17,6 @@ class OdomSubscriber:
 
         yaw_values = [euler_from_quaternion((quat.x, quat.y, quat.z, quat.w))[2] for quat in quaternions]
 
-
-
         plt.clf()
         plt.quiver(x_positions, y_positions, np.cos(yaw_values), np.sin(yaw_values), angles='xy', scale_units='xy', scale=100)
         plt.xlabel('X position')
@@ -27,7 +25,7 @@ class OdomSubscriber:
         plt.grid(True)
         plt.pause(0.001)
 
-    
+
 if __name__=="__main__":
     x_positions = []
     y_positions = []
@@ -44,4 +42,4 @@ if __name__=="__main__":
 
     except rospy.ROSInterruptException:
         rospy.loginfo("Got interrupted request!")
-    
+

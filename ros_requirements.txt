@@ -1,0 +1,4 @@
+
+sudo apt-get install ros-noetic-rosbag
+sudo apt-get install ros-noetic-cv-bridge
+
