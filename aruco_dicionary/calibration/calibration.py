@@ -4,9 +4,7 @@ import glob
 import pickle
 
 
-
 ################ FIND CHESSBOARD CORNERS - OBJECT POINTS AND IMAGE POINTS #############################
-
 chessboardSize = (9,6)
 frameSize = (640,480)
 
@@ -22,16 +20,13 @@ objp[:,:2] = np.mgrid[0:chessboardSize[0],0:chessboardSize[1]].T.reshape(-1,2)
 size_of_chessboard_squares_mm = 20
 objp = objp * size_of_chessboard_squares_mm
 
-
 # Arrays to store object points and image points from all the images.
 objpoints = [] # 3d point in real world space
 imgpoints = [] # 2d points in image plane.
 
-
 images = glob.glob('cameraCalibration/images/*.png')
 
 for image in images:
-
     img = cv.imread(image)
     gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
@@ -57,7 +52,6 @@ cv.destroyAllWindows()
 
 
 ############## CALIBRATION #######################################################
-
 ret, cameraMatrix, dist, rvecs, tvecs = cv.calibrateCamera(objpoints, imgpoints, frameSize, None, None)
 
 # Save the camera calibration result for later use (we won't worry about rvecs / tvecs)
@@ -67,7 +61,6 @@ pickle.dump(dist, open( "dist.pkl", "wb" ))
 
 
 ############## UNDISTORTION #####################################################
-
 img = cv.imread('cali5.png')
 h,  w = img.shape[:2]
 newCameraMatrix, roi = cv.getOptimalNewCameraMatrix(cameraMatrix, dist, (w,h), 1, (w,h))
