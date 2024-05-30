@@ -95,7 +95,7 @@ def prediction_update(mu,sigma,u,dt,moving):
      - mu: updated state estimate
      - sigma: updated state uncertainty
     '''
-    rx,py,theta = mu[0],mu[1],mu[2]
+    rx,py,theta = mu[0],mu[1],mu[2]f
     v,w = u[0],u[1]
     Erro_r = np.zeros((3,3))
     
