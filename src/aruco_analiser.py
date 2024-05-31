@@ -13,7 +13,7 @@ CAMERA_MATRIX = np.array([[490.100238, 0.000000, 325.559625],
 DIST_COEFFS = np.array([0.122115, -0.212824, 0.000813, 0.002590, 0.000000], dtype=np.float32)
 
 # Define marker size as a global variable
-MARKER_SIZE = 0.15  # Replace with your actual marker size
+MARKER_SIZE = 0.15 # meters
 
 class ArucoDetector:
     def __init__(self):
@@ -107,3 +107,4 @@ if __name__ == '__main__':
         rospy.spin()
     except rospy.ROSInterruptException:
         cv2.destroyAllWindows()
+ 
