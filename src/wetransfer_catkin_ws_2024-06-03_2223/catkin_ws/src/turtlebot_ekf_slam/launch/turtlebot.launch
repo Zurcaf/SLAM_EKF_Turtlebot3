@@ -1,0 +1,8 @@
+<launch>
+
+      <!-- Launch EKF SLAM Node -->
+     <node name="ekf_slam" pkg="turtlebot_ekf_slam" type="EKF_SLAM_subscribe.py" output="screen"/>
+     
+    
+</launch>
+
