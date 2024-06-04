@@ -23,6 +23,14 @@ export ROS_IP=192.168.[27/28].XXX		        	[lab computer / laptop IP]
 ->	sudo ntpdate ntp.ubuntu.com
 ->	roslaunch turtlebot3_bringup turtlebot3_robot.launch
 
+#terminal to launch the teleop (control the robot in pc)
+->  roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+#Launch the camera node on the robot
+->  roslaunch turtlebot3_bringup turtlebot3_rpicamera.launch
+To see the camera feed, run on the laptop/Lab computer
+rosrun rqt_image_view rqt_image_view
+
 #terminal numero 4 record topics in rosbags 
 ->	ssh 192.168.28.[11…15]
 ->	rosbag record -a 				#for all topics
@@ -30,4 +38,5 @@ export ROS_IP=192.168.[27/28].XXX		        	[lab computer / laptop IP]
 -> ctrl + c                         #to stop the recording
 
 #terminal numero 5 to copy the bag from the turtlebot3 to the pc
-->  scp user@192.168.28.[11…15]:<CAMINHO PARA BAG NO TURTHL>*.bag </home/user/Desktop/(CAMINHO DESTINO NO PC)>
+->  scp user@192.168.28.15:/home/user*.bag /home/afonso/Desktop
+
