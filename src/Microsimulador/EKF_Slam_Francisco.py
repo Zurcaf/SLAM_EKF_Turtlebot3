@@ -95,7 +95,7 @@ def prediction_update(mu,sigma,u,dt,moving):
      - mu: updated state estimate
      - sigma: updated state uncertainty
     '''
-    rx,py,theta = mu[0],mu[1],mu[2]f
+    rx,py,theta = mu[0],mu[1],mu[2]
     v,w = u[0],u[1]
     Erro_r = np.zeros((3,3))
     
@@ -263,7 +263,7 @@ if __name__ == '__main__':
 
     # Initialize and display environment
     env = environment.Environment(map_image_path="./python_ugv_sim/maps/map_blank.png")
-
+    
     # Initialize robot state estimate and sigma
     mu[0:3] = np.expand_dims(x_init,axis=1)
     sigma[0:3,0:3] = 0.1*np.eye(3)
